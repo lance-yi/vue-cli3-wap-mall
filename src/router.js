@@ -1,3 +1,8 @@
+/*
+ * @Author       : Lance Yi <latticeyi@gmail.com>
+ * @Date         : 2020-12-24 17:13:12
+ * @Description  :
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from './views/index.vue'
@@ -9,30 +14,31 @@ Router.prototype.push = function push (location) {
 }
 Vue.use(Router)
 
+const routes = [
+  {
+    path: '*',
+    redirect: '/'
+  },
+  {
+    meta: { title: '首页', noAuth: false },
+    component: Index
+  }
+  // {
+  //   path: '/author',
+  //   name: 'author',
+  //   meta: { title: '微信授权登陆中...', noAuth: true },
+  //   component: () => import('@/views/author')
+  // },
+]
+
+// add route path
+routes.forEach(route => {
+  route.path = route.path || '/' + (route.name || '')
+})
+
 const router = new Router({
-  // mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      meta: {
-        title: 'Lance-index',
-        noAuth: false
-      },
-      component: Index
-    }
-    // {
-    //   path: '/author',
-    //   name: 'author',
-    //   meta: {
-    //     title: '微信授权登陆中...',
-    //     noAuth: true
-    //   },
-    //   component: () => import('@/views/author')
-    // },
-  ],
-  // eslint-disable-next-line
-  scrollBehavior(to, from, savedPosition) {
+  routes,
+  scrollBehavior (to, from, savedPosition) {
     // 从第二页返回首页时savedPosition为undefined
     if (savedPosition || typeof savedPosition === 'undefined') {
       // 只处理设置了路由元信息的组件
@@ -47,12 +53,12 @@ const router = new Router({
     }
   }
 })
+
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title
   }
 
-  // !不需要用户登录
   if (to.meta.noAuth) {
     next()
   } else {

@@ -29,7 +29,7 @@ export default {
         this.$baseUtils.getWeixinCode()
       }
       if (code !== null) {
-        this.$http.post(this.$apiConf.GET_WEIXINUNIONID, { code }, res => {
+        this.$http.post(this.$apiUri.GET_WEIXINUNIONID, { code }, res => {
           if (res.data.errcode > 0) {
             this.$store.dispatch('setUserWeixinInfo', {})
             this.$toast(res.data.errcode)

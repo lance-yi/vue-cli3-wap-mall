@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import router from '../router'
 import axios from '../api/index'
-import apiConf from '../api/config'
+import apiUri from '../api/config'
 import store from '../store'
 import Vue from 'vue'
 import { Toast } from 'vant'
@@ -21,23 +21,6 @@ const goBack = (i) => {
  */
 const getScreenHeight = () => {
   return document.documentElement.clientHeight || document.body.clientHeight
-}
-
-/**
- * *  获取app_token
- */
-const getAppToken = () => {
-  return new Promise((resolve, reject) => {
-    axios.post(apiConf.GET_APP_TOKEN, {
-      app_id: apiConf.APP_ID,
-      private_key: apiConf.PRIVATE_KEY
-    }, res => {
-      store.dispatch('setAppToken', res.data)
-      resolve(res)
-    }, err => {
-      reject(err)
-    })
-  })
 }
 
 /**
@@ -191,7 +174,7 @@ const goBeforeLoginUrl = () => {
     if (url === '/') {
       url = '/'
     }
-    window.location.href = apiConf.WEBSITE_URL + '#' + url
+    window.location.href = apiUri.WEBSITE_URL + '#' + url
     window.sessionStorage.setItem('beforeLoginUrl', '')
   }
 }
@@ -199,7 +182,7 @@ const goBeforeLoginUrl = () => {
  * * 静默登录  获取微信登录code
  */
 const getWeixinCode = () => {
-  axios.post(apiConf.GET_WEIXINURL, { url: window.location.href }, res => {
+  axios.post(apiUri.GET_WEIXINURL, { url: window.location.href }, res => {
     window.location.href = res.data
   })
 }
@@ -234,7 +217,7 @@ const toAppBaseFun = (method, obj, callback) => {
 
 const appLoginQuiet = function (param) {
   return new Promise((resolve, reject) => {
-    axios.post(apiConf.LOGIN_PASSWORD, {
+    axios.post(apiUri.LOGIN_PASSWORD, {
       'mobile': param.phone,
       'password': param.passwd,
       'login_type': 1
@@ -267,7 +250,6 @@ const setupWebViewJavascriptBridge = (callback) => {
 export default {
   goBack,
   getScreenHeight,
-  getAppToken,
   countDistance,
   getDistance,
   regPrice,

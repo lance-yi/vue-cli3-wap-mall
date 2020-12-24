@@ -51,8 +51,10 @@ module.exports = {
   productionSourceMap: false, // 生产环境是否生成 sourceMap 文件
   // css相关配置
   css: {
-    extract: true, // 是否使用css分离插件 ExtractTextPlugin
-    sourceMap: false, // 开启 CSS source maps?
+    // 是否使用css分离插件 ExtractTextPlugin
+    extract: true,
+    // 开启 CSS source maps?
+    sourceMap: false,
     loaderOptions: {
       less: {
         modifyVars: {
@@ -67,8 +69,7 @@ module.exports = {
           'cell-value-color': '#666666'
         }
       }
-    }, // css预设器配置项
-    modules: false // 启用 CSS modules for all css / pre-processor files.
+    }
   },
   // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
   parallel: require('os').cpus().length > 1,
@@ -85,12 +86,6 @@ module.exports = {
         target: 'https://test.beeke.vip',
         ws: true,
         pathRewrite: { '^/api': '' },
-        changeOrigin: true
-      },
-      '/dev-api': {
-        target: 'https://t-appportal.meitianhui.com/gatewayapi',
-        ws: true,
-        pathRewrite: { '^/dev-api': '' },
         changeOrigin: true
       }
     }

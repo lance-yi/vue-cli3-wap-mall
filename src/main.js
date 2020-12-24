@@ -1,8 +1,12 @@
+/*
+ * @Author       : Lance Yi <latticeyi@gmail.com>
+ * @Date         : 2020-12-24 16:06:15
+ * @Description  : VUE2.0 主类
+ */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import upload from 'vue-upload-component'
 // 移动端适配
 import 'amfe-flexible'
 // 配置axios
@@ -43,10 +47,6 @@ import {
   SubmitBar
 } from 'vant'
 
-// es6转换
-import '@babel/polyfill'
-import Es6Promise from 'es6-promise'
-
 // 手机调试工具
 // import VConsole from 'vconsole'
 // const vConsole = new VConsole()
@@ -59,7 +59,6 @@ if (process.env.NODE_ENV === 'development') {
   })
 }
 
-Es6Promise.polyfill()
 Vue.use(Navigation, { router, store })
 
 Vue.use(utils)
@@ -90,7 +89,6 @@ Vue.use(utils)
   .use(Pagination)
   .use(Area)
   .use(SubmitBar)
-  .use(upload)
 
 Vue.config.productionTip = false
 

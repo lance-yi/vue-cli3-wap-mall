@@ -1,6 +1,7 @@
 {
-  "name": "beikejieshi-vue",
-  "version": "0.1.0",
+  "name": "jms-agent",
+  "description": "静默思代理商前端页面",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,12 +10,6 @@
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
-    "babel-polyfill": "^6.26.0",
-    "es6-promise": "^4.2.8",
-    "html2canvas": "^1.0.0-rc.5",
-    "js-md5": "^0.7.3",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
     "qs": "^6.7.0",
     "vant": "^2.2.9",
@@ -22,27 +17,27 @@
     "vue-baidu-map": "^0.21.22",
     "vue-navigation": "^1.1.4",
     "vue-router": "^3.0.1",
-    "vue-touch": "^2.0.0-beta.4",
-    "vue-upload-component": "^2.8.20",
     "vuex": "^3.0.1",
     "weixin-js-sdk": "^1.4.0-test"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.1",
-    "@vue/cli-plugin-eslint": "^3.0.1",
-    "@vue/cli-service": "^3.0.1",
+    "@vue/cli-plugin-babel": "^4.1.1",
+    "@vue/cli-plugin-eslint": "^4.1.1",
+    "@vue/cli-service": "^4.1.1",
     "@vue/eslint-config-standard": "^3.0.4",
     "axios": "^0.18.0",
-    "babel-plugin-import": "^1.9.1",
-    "babel-preset-es2015": "^6.24.1",
-    "browser-image-compression": "^1.0.6",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-import": "^1.12.0",
+    "eslint": "^7.16.0",
+    "eslint-plugin-vue": "^6.0.1",
+    "less": "^3.8.1",
+    "less-loader": "^5.0.0",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "postcss-pxtorem": "^4.0.1",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "^6.0.7",
     "vconsole": "^3.3.4",
-    "vue-template-compiler": "^2.5.17",
-    "vux": "^2.9.4"
+    "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
